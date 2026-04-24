@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hamster Cellular Automata</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #222;
+      text-align: center;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .controls {
+      margin-bottom: 20px;
+    }
+
+    button,
+    select {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      cursor: pointer;
+    }
+
+    button:hover,
+    select:hover {
+      background: #eaeaea;
+    }
+
+    .slider-wrap {
+      margin-top: 10px;
+    }
+
+    #speedSlider {
+      width: 200px;
+    }
+
+    #speedValue {
+      margin-left: 8px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    canvas {
+      display: block;
+      margin: 20px auto;
+      border: 1px solid #ccc;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #666;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Hamster Cellular Automata &#128057</h1>
+
+  
+
+  <div class="controls">
+    <button id="playButton">Play</button>
+    <button id="stopButton">Stop</button>
+    <button id="randomizeButton">Randomize</button>
+    <button id="stepButton">Step Once</button>
+     
+    <br>
+
+    <select id="ruleSelect">
+      <option value="hamsterLove">Hamster Love</option>
+      <option value="hamsterKill">Hamster Kill</option>
+      <option value="hamsterLife">Hamster Life</option>
+      <option value="hamster67">Hamster67</option>  
+    </select>
+
+    <div class="slider-wrap">
+      <label for="speedSlider">Speed</label>
+      <input id="speedSlider" type="range" min="120" max="1400" step="20" value="600" />
+      <span id="speedValue">600 ms</span>
+    </div>
+  </div>
+
+  <canvas id="gridCanvas" width="720" height="420"></canvas>
+
+  <h2>Blog Post: </h2>
+  <p>
+    Hi, so for the Hamster Cellular Automata, I first created an 8x5 2D grid, I didn't want to make it too big because I wanted to add individual pictures for each of the 
+    squares icl. Ok, so bc there were 40 total squares, I decided to do 8 different pentatonic scales where each column is a different scale because I love my pentatonic scales. So I 
+    directly inputted the scale patterns to the columnScales array so that each box has its own little note(some are repeats). After that I uploaded all the hamster images to the boxes in js. 
+    After that, I decided on four different systems to guide the automata behavior and each of them have a survive and birth rule, in which I specify how many neighbors a box needs to have
+    to either keeping living to start living, if it doesn't meet either criteria it dies. There are also methods for "collecting" every note that is alive at that point to play
+    their respective notes during that generation, and another to actually play the entire grid at once. I had issues with this in the beginning, because it seemed like only new notes 
+    would start playing. For each generation, the selected system is applied to the current grid and moves onto the next generation with the rule applied and so on. I also added a speed slider, generation counter, and step incrementer like in the Game of Life, and I also added a random grid generator so we can get out of any empty/stuck grids. 
+    Some insights that I gained from programming this beyond what we covered in class is that like it's harder than I thought to come up with certain rules that will kind of prolong the 
+    lifetime of the blocks because I kind of wanted certain systems like Hamster Kill to die out quickly and Hamster Love to last long and be filled a lot, so I had to do some experimentation
+    to see what would work best to kind of fit what I had in mind in terms of the general rule/pattern. I had also initally wanted to do like one for each of the 4 classes of cellular automata 
+    but, after some experimentation, I was kind of deterred just because it felt really daunting to try to directly fit a certain system into one of these classes. I would say that quite a few
+    of my systems stall/don't change at a certain point or sometimes altogether disappear but it mostly depends on the initial randomized grid, but that can be fun too yay. But, I think the process of
+    coming up with the rules was definitely the most fun and I played around with it a lot. This process also helped me understand the actual process of creating cellular automata and 
+    I thought it was super interesting and not as like mystified as it was before. 
+  </p>
+
+  <script src="main.js"></script>
+</body>
+</html>
